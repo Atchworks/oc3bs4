@@ -2,9 +2,9 @@
 <div class="container">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-    {% for breadcrumb in breadcrumbs %}
+      {% for breadcrumb in breadcrumbs %}
       <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
-    {% endfor %}
+      {% endfor %}
     </ol>
   </nav>
   {% if success %}
@@ -25,42 +25,42 @@
       <h1>{{ heading_title }}</h1>
       <div class="table-responsive">
         <table class="table table-bordered table-hover">
-          <thead>
-            <tr>
-              <td class="text-left">{{ column_type }}</td>
-              <td class="text-left">{{ column_digits }}</td>
-              <td class="text-right">{{ column_expiry }}</td>
-            </tr>
-          </thead>
-          <tbody>
-          
-          {% if cards %}
-          {% for card in cards %}
+        <thead>
           <tr>
-            <td class="text-left">{{ card.type }}</td>
-            <td class="text-left">{{ card.digits }}</td>
-            <td class="text-right">{{ card.expiry }}</td>
-            <td class="text-right"><a href="{{ delete }} {{ card.card_id }}" class="btn btn-danger">{{ button_delete }}</a></td>
+            <td class="text-left">{{ column_type }}</td>
+            <td class="text-left">{{ column_digits }}</td>
+            <td class="text-right">{{ column_expiry }}</td>
           </tr>
-          {% endfor %}
-          {% else %}
-          <tr>
-            <td class="text-center" colspan="5">{{ text_empty }}</td>
-          </tr>
-          {% endif %}
-            </tbody>
-          
-        </table>
+        </thead>
+        <tbody>
+
+        {% if cards %}
+        {% for card in cards %}
+        <tr>
+          <td class="text-left">{{ card.type }}</td>
+          <td class="text-left">{{ card.digits }}</td>
+          <td class="text-right">{{ card.expiry }}</td>
+          <td class="text-right"><a href="{{ delete }} {{ card.card_id }}" class="btn btn-danger">{{ button_delete }}</a></td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+          <td class="text-center" colspan="5">{{ text_empty }}</td>
+        </tr>
+        {% endif %}
+          </tbody>
+
+      </table>
       </div>
       <div class="row">
         <div class="col-sm-6 text-left">{{ pagination }}</div>
         <div class="col-sm-6 text-right">{{ results }}</div>
       </div>
       <div class="buttons clearfix">
-        <div class="pull-left"><a href="{{ back }}" class="btn btn-default">{{ button_back }}</a></div>
-        <div class="pull-right"><a href="{{ add }}" class="btn btn-primary">{{ button_new_card }}</a></div>
+        <div class="float-left"><a href="{{ back }}" class="btn btn-secondary">{{ button_back }}</a></div>
+        <div class="float-right"><a href="{{ add }}" class="btn btn-primary">{{ button_new_card }}</a></div>
       </div>
       {{ content_bottom }}</div>
     {{ column_right }}</div>
 </div>
-{{ footer }} 
+{{ footer }}
