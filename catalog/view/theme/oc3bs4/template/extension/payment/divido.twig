@@ -353,7 +353,7 @@
 </div>
 
 <div class="buttons">
-    <div class="pull-right">
+    <div class="float-right">
         <input type="button" value="{{ button_confirm }}" id="button-confirm" class="btn btn-primary" data-loading-text="{{ text_loading }}" />
     </div>
 </div>
@@ -388,10 +388,10 @@
                 dataType : 'json',
                 cache    : false,
                 beforeSend: function() {
-                    $('#button-confirm').button('loading');
+                    $('#button-confirm').buttonState('loading');
                 },
                 complete: function() {
-                    $('#button-confirm').button('reset');
+                    $('#button-confirm').buttonState('reset');
                 },
                 success: function(data) {
                     if (data.status == 'ok') {

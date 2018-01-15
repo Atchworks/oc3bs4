@@ -2,9 +2,9 @@
 <div id="account-transaction" class="container">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-    {% for breadcrumb in breadcrumbs %}
+      {% for breadcrumb in breadcrumbs %}
       <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
-    {% endfor %}
+      {% endfor %}
     </ol>
   </nav>
   <div class="row">{{ column_left }}
@@ -20,38 +20,38 @@
       <p>{{ text_total }} <b>{{ total }}</b>.</p>
       <div class="table-responsive">
         <table class="table table-bordered table-hover">
-          <thead>
-            <tr>
-              <td class="text-left">{{ column_date_added }}</td>
-              <td class="text-left">{{ column_description }}</td>
-              <td class="text-right">{{ column_amount }}</td>
-            </tr>
-          </thead>
-          <tbody>
-          
-          {% if transactions %}
-          {% for transaction in transactions %}
+        <thead>
           <tr>
-            <td class="text-left">{{ transaction.date_added }}</td>
-            <td class="text-left">{{ transaction.description }}</td>
-            <td class="text-right">{{ transaction.amount }}</td>
+            <td class="text-left">{{ column_date_added }}</td>
+            <td class="text-left">{{ column_description }}</td>
+            <td class="text-right">{{ column_amount }}</td>
           </tr>
-          {% endfor %}
-          {% else %}
-          <tr>
-            <td class="text-center" colspan="5">{{ text_empty }}</td>
-          </tr>
-          {% endif %}
-            </tbody>
-          
-        </table>
+        </thead>
+        <tbody>
+
+        {% if transactions %}
+        {% for transaction in transactions %}
+        <tr>
+          <td class="text-left">{{ transaction.date_added }}</td>
+          <td class="text-left">{{ transaction.description }}</td>
+          <td class="text-right">{{ transaction.amount }}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+          <td class="text-center" colspan="5">{{ text_empty }}</td>
+        </tr>
+        {% endif %}
+          </tbody>
+
+      </table>
       </div>
       <div class="row">
         <div class="col-sm-6 text-left">{{ pagination }}</div>
         <div class="col-sm-6 text-right">{{ results }}</div>
       </div>
       <div class="buttons clearfix">
-        <div class="pull-right"><a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a></div>
+        <div class="float-right"><a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a></div>
       </div>
       {{ content_bottom }}</div>
     {{ column_right }}</div>

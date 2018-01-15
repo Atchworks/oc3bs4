@@ -7,7 +7,7 @@
   {% endif %}
 
   <div class="buttons">
-    <div class="pull-right">
+    <div class="float-right">
       <input type="button" value="{{ button_pay }}" id="button-confirm" data-loading-text="{{ text_loading }}" class="btn btn-primary" />
     </div>
   </div>
@@ -29,15 +29,15 @@
 		if (result == "Complete") {
 			window.location.href = "{{ callback }}";
 		} else if (result == "Error") {
-			$('#button-confirm').button('reset');
+			$('#button-confirm').buttonState('reset');
 			alert("There was a problem completing the payment: " + result);
 		} else {
-			$('#button-confirm').button('reset');
+			$('#button-confirm').buttonState('reset');
 		}
 	}
 
 	$('#button-confirm').bind('click', function() {
-		$('#button-confirm').button('loading');
+		$('#button-confirm').buttonState('loading');
 		eCrypt.showModalPayment(eWAYConfig, resultCallback);
 	});
 

@@ -12,10 +12,10 @@ $(document).delegate('#button-cancel', 'click', function() {
         url: 'index.php?route=extension/recurring/pp_express/cancel',
 		dataType: 'json',
         beforeSend: function() {
-         	$('#button-cancel').button('loading');
+         	$('#button-cancel').buttonState('loading');
 		},
 		complete: function() {
-			$('#button-cancel').button('reset');
+			$('#button-cancel').buttonState('reset');
 		},		
         success: function(json) {
             $('.alert-dismissible').remove();

@@ -6,12 +6,12 @@
 <div id="squareup-notification">
     <div class="text-center alert alert-info"><i class="fa fa-circle-o-notch fa-spin"></i>&nbsp;{{ text_loading }}</div>
 </div>
-<form class="form-horizontal" action="{{ action }}" method="POST" id="squareup_card_details_form" style="display: none;">
+<form action="{{ action }}" method="POST" id="squareup_card_details_form" style="display: none;">
     <fieldset>
         <legend>{{ text_card_details }}</legend>
         {% if cards %}
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="squareup_select_card">{{ text_saved_card }}</label>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="squareup_select_card">{{ text_saved_card }}</label>
             <div class="col-sm-10">
                 <select class="form-control" name="squareup_select_card" id="squareup_select_card">
                     <option selected value>{{ text_new_card }}</option>
@@ -24,25 +24,25 @@
         {% endif %}
     </fieldset>
     <fieldset id="hide-card-details">
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="id_card_number">{{ text_card_number }}</label>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="id_card_number">{{ text_card_number }}</label>
             <div class="col-sm-10"><div id="id_card_number"></div></div>
         </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="id_card_expiry">{{ text_card_expiry }}</label>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="id_card_expiry">{{ text_card_expiry }}</label>
             <div class="col-sm-10"><div id="id_card_expiry"></div></div>
         </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="id_cvc">{{ text_card_cvc }}</label>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="id_cvc">{{ text_card_cvc }}</label>
             <div class="col-sm-10"><div id="id_cvc"></div></div>
         </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="id_card_zip_code">{{ text_card_zip }}</label>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="id_card_zip_code">{{ text_card_zip }}</label>
             <div class="col-sm-10"><div id="id_card_zip_code"></div></div>
         </div>
         {% if is_logged %}
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="squareup_save_card">{{ text_card_save }}</label>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="squareup_save_card">{{ text_card_save }}</label>
                 <div class="col-sm-10">
                     <input type="checkbox" id="squareup_save_card" value="1" name="squareup_save_card"/>
                 </div>
@@ -50,14 +50,14 @@
         {% endif %}
     </fieldset>
     <div class="buttons">
-        <div class="pull-right">
+        <div class="float-right">
             <input type="button" value="{{ button_confirm }}" id="button-confirm-order" data-loading-text="{{ text_loading }}" class="btn btn-primary">
         </div>
     </div>
     <input type="hidden" name="squareup_nonce" id="squareup_nonce"/>
 </form>
 <style>
-    .control-label {
+    .col-form-label {
         cursor: pointer;
     }
 
@@ -144,7 +144,7 @@
             type : $(form).attr('method'),
             data : $(form).serialize(),
             beforeSend : function() {
-                $('#button-confirm-order').button('loading');
+                $('#button-confirm-order').buttonState('loading');
             },
             success : function(json) {
                 if (json.error) {
@@ -157,7 +157,7 @@
                 squareupError(thrownError);
             },
             complete : function() {
-                $('#button-confirm-order').button('reset');
+                $('#button-confirm-order').buttonState('reset');
             }
         });
     }
@@ -176,7 +176,7 @@
     }
 
     function squareupError(error) {
-        $('#button-confirm-order').button('reset');
+        $('#button-confirm-order').buttonState('reset');
 
         $('#squareup-notification').html('<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-label="X"><span aria-hidden="true">&times;</span></button><i class="fa fa-exclamation-circle"></i>&nbsp;' + error + '</div>');
     }
@@ -189,7 +189,7 @@
 
     function initSquareup(init_ajax_setup) {
         toggleAjaxSetup(false);
-        
+
         var script = document.createElement('script');
         script.type="text/javascript";
         $("head").append(script);
@@ -204,7 +204,7 @@
         e.stopPropagation();
 
         $('#squareup-notification').empty();
-        $('#button-confirm-order').button('loading');
+        $('#button-confirm-order').buttonState('loading');
 
         onConfirmCheckout();
     });

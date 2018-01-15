@@ -16,10 +16,10 @@ $(document).delegate('#button-cancel', 'click', function() {
         url: '{{ cancel_url }}',
         dataType: 'json',
         beforeSend: function() {
-             $('#button-cancel').button('loading');
+             $('#button-cancel').buttonState('loading');
         },
         complete: function() {
-            $('#button-cancel').button('reset');
+            $('#button-cancel').buttonState('reset');
         },        
         success: function(json) {
             $('.alert').remove();

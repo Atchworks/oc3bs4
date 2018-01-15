@@ -2,9 +2,9 @@
 <div class="container">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-    {% for breadcrumb in breadcrumbs %}
+      {% for breadcrumb in breadcrumbs %}
       <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
-    {% endfor %}
+      {% endfor %}
     </ol>
   </nav>
   {% if attention %}
@@ -37,7 +37,7 @@
       <h1>{{ heading_title }}</h1>
 
       {% if coupon or voucher or reward %}
-        <div class="panel-group" id="accordion">{{ coupon }}{{ voucher }}{{ reward }}</div>
+        <div id="accordion">{{ coupon }}{{ voucher }}{{ reward }}</div>
       {% endif %}
 
       {% if has_shipping %}
@@ -45,21 +45,19 @@
           <div class="warning">{{ error_no_shipping }}</div>
         {% else %}
           <form action="{{ action_shipping }}" method="post" id="shipping_form">
-            <div class="panel-body">
+            <div class="card-body">
               {% for shipping_method in shipping_methods %}
                 <p><strong>{{ shipping_method.title }}</strong></p>
                 {% if not shipping_method.error %}
                   {% for quote in shipping_method.quote %}
-                  <div class="radio">
-                    <label>
-                      {% if quote.code == code or not code %}
-                        {% set code = quote.code %}
-                        <input type="radio" name="shipping_method" value="{{ quote.code }}" id="{{ quote.code }}" checked="checked" />
-                      {% else %}
-                        <input type="radio" name="shipping_method" value="{{ quote.code }}" id="{{ quote.code }}" />
-                      {% endif %}
-                      {{ quote.title }}
-                    </label>
+                  <div class="form-check">
+                    {% if quote.code == code or not code %}
+                      {% set code = quote.code %}
+                      <input class="form-check-input" type="radio" name="shipping_method" value="{{ quote.code }}" id="{{ quote.code }}" checked="checked">
+                    {% else %}
+                      <input class="form-check-input" type="radio" name="shipping_method" value="{{ quote.code }}" id="{{ quote.code }}">
+                    {% endif %}
+                    <label class="form-check-label">{{ quote.title }}</label>
                   </div>
                   {% endfor %}
                 {% else %}
@@ -72,48 +70,48 @@
       {% endif %}
       <div class="table-responsive">
         <table class="table table-bordered">
-          <thead>
-            <tr>
-              <td class="text-left">{{ column_name }}</td>
-              <td class="text-left">{{ column_model }}</td>
-              <td class="text-center">{{ column_quantity }}</td>
-              <td class="text-right">{{ column_price }}</td>
-              <td class="text-right">{{ column_total }}</td>
-            </tr>
-          </thead>
-          <tbody>
-          {% for product in products %}
-            <tr>
-              <td class="text-left">
-                <a href="{{ product.href }}">{{ product.name }}</a>
-                {% for option in product.option %} <br />
-                  <small> - {{ option.name }}: {{ option.value }}</small>
-                {% endfor %}
-                {% if product.recurring %}
-                  <br /><span class="label label-info">{{ text_recurring_item }}</span> <small>{{ product.recurring_description }}</small>
-                {% endif %}
-              </td>
-              <td class="text-left">{{ product.model }}</td>
-              <td class="text-center">{{ product.quantity }}</td>
-              <td class="text-right">{{ product.price }}</td>
-              <td class="text-right">{{ product.total }}</td>
-            </tr>
-          {% endfor %}
-          {% for voucher in vouchers %}
-            <tr>
-              <td class="text-left">{{ voucher.description }}</td>
-              <td class="text-left"></td>
-              <td class="text-center">1</td>
-              <td class="text-right">{{ voucher.amount }}</td>
-              <td class="text-right">{{ voucher.amount }}</td>
-            </tr>
-          {% endfor %}
-          </tbody>
-        </table>
+        <thead>
+          <tr>
+            <td class="text-left">{{ column_name }}</td>
+            <td class="text-left">{{ column_model }}</td>
+            <td class="text-center">{{ column_quantity }}</td>
+            <td class="text-right">{{ column_price }}</td>
+            <td class="text-right">{{ column_total }}</td>
+          </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+          <tr>
+            <td class="text-left">
+              <a href="{{ product.href }}">{{ product.name }}</a>
+              {% for option in product.option %} <br />
+                <small> - {{ option.name }}: {{ option.value }}</small>
+              {% endfor %}
+              {% if product.recurring %}
+                <br /><span class="badge badge-info">{{ text_recurring_item }}</span> <small>{{ product.recurring_description }}</small>
+              {% endif %}
+            </td>
+            <td class="text-left">{{ product.model }}</td>
+            <td class="text-center">{{ product.quantity }}</td>
+            <td class="text-right">{{ product.price }}</td>
+            <td class="text-right">{{ product.total }}</td>
+          </tr>
+        {% endfor %}
+        {% for voucher in vouchers %}
+          <tr>
+            <td class="text-left">{{ voucher.description }}</td>
+            <td class="text-left"></td>
+            <td class="text-center">1</td>
+            <td class="text-right">{{ voucher.amount }}</td>
+            <td class="text-right">{{ voucher.amount }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
       </div>
       <br />
       <div class="row">
-        <div class="col-sm-4 col-sm-offset-8">
+        <div class="col-sm-4 offset-sm-8">
           <table class="table table-bordered">
             {% for total in totals %}
             <tr>
@@ -125,7 +123,7 @@
         </div>
       </div>
       <div class="buttons">
-        <div class="pull-right"><a href="{{ action_confirm }}" class="btn btn-primary" id="paypal-confirm">{{ button_confirm }}</a></div>
+        <div class="float-right"><a href="{{ action_confirm }}" class="btn btn-primary" id="paypal-confirm">{{ button_confirm }}</a></div>
       </div>
       {{ content_bottom }}</div>
     {{ column_right }}</div>
@@ -143,6 +141,6 @@ $('input[name=\'next\']').bind('change', function() {
 });
 
 $('#paypal-confirm').bind('click', function() {
-    $('#paypal-confirm').prop('disabled', true).button('loading');
+    $('#paypal-confirm').prop('disabled', true).buttonState('loading');
 });
 //--></script>

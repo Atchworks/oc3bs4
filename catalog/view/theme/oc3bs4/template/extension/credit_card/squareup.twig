@@ -2,9 +2,9 @@
 <div class="container">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-    {% for breadcrumb in breadcrumbs %}
+      {% for breadcrumb in breadcrumbs %}
       <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
-    {% endfor %}
+      {% endfor %}
     </ol>
   </nav>
   {% if success %}
@@ -42,7 +42,7 @@
         {% endif %}
 
         <div class="buttons">
-            <a class="btn btn-default" href="{{ back }}">{{ text_back }}</a>
+            <a class="btn btn-secondary" href="{{ back }}">{{ text_back }}</a>
         </div>
       {{ content_bottom }}</div>
     {{ column_right }}</div>

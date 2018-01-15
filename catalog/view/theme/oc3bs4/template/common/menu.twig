@@ -1,14 +1,19 @@
 {% if categories %}
 <div class="container">
-  <nav id="menu" class="navbar">
-    <div class="navbar-header"><span id="category" class="visible-xs">{{ text_category }}</span>
-      <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
-    </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav">
+  <nav id="menu" class="navbar navbar-expand-md navbar-light bg-light">
+
+    <span id="category" class="navbar-brand d-sm-none">{{ text_category }}</span>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav mr-auto">
         {% for category in categories %}
         {% if category.children %}
-        <li class="dropdown"><a href="{{ category.href }}" class="dropdown-toggle" data-toggle="dropdown">{{ category.name }}</a>
+        <li class="nav-item dropdown">
+          <a href="{{ category.href }}" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ category.name }}</a>
           <div class="dropdown-menu">
             <div class="dropdown-inner"> {% for children in category.children|batch(category.children|length / category.column|round(1, 'ceil')) %}
               <ul class="list-unstyled">
@@ -20,11 +25,11 @@
             <a href="{{ category.href }}" class="see-all">{{ text_all }} {{ category.name }}</a> </div>
         </li>
         {% else %}
-        <li><a href="{{ category.href }}">{{ category.name }}</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ category.href }}">{{ category.name }}</a></li>
         {% endif %}
         {% endfor %}
       </ul>
     </div>
   </nav>
 </div>
-{% endif %} 
+{% endif %}

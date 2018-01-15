@@ -7,14 +7,14 @@
 <p><strong>{{ shipping_method.title }}</strong></p>
 {% if not shipping_method.error %}
 {% for quote in shipping_method.quote %}
-<div class="radio">
-  <label> {% if quote.code == code or not code %}
+<div class="form-check">
+  {% if quote.code == code or not code %}
     {% set code = quote.code %}
-    <input type="radio" name="shipping_method" value="{{ quote.code }}" checked="checked" />
-    {% else %}
-    <input type="radio" name="shipping_method" value="{{ quote.code }}" />
-    {% endif %}
-    {{ quote.title }} - {{ quote.text }}</label>
+    <input class="form-check-input" type="radio" name="shipping_method" value="{{ quote.code }}" checked="checked">
+  {% else %}
+    <input class="form-check-input" type="radio" name="shipping_method" value="{{ quote.code }}">
+  {% endif %}
+  <label class="form-check-label">{{ quote.title }} - {{ quote.text }}</label>
 </div>
 {% endfor %}
 {% else %}
@@ -27,7 +27,7 @@
   <textarea name="comment" rows="8" class="form-control">{{ comment }}</textarea>
 </p>
 <div class="buttons">
-  <div class="pull-right">
+  <div class="float-right">
     <input type="button" value="{{ button_continue }}" id="button-shipping-method" data-loading-text="{{ text_loading }}" class="btn btn-primary" />
   </div>
 </div>

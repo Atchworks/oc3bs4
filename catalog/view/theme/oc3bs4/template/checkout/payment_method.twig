@@ -4,17 +4,19 @@
 {% if payment_methods %}
 <p>{{ text_payment_method }}</p>
 {% for payment_method in payment_methods %}
-<div class="radio">
-  <label>{% if payment_method.code == code or not code %}
-    {% set code = payment_method.code %}
-    <input type="radio" name="payment_method" value="{{ payment_method.code }}" checked="checked" />
-    {% else %}
-    <input type="radio" name="payment_method" value="{{ payment_method.code }}" />
-    {% endif %}
+<div class="form-check">
+  {% if payment_method.code == code or not code %}
+  {% set code = payment_method.code %}
+  <input class="form-check-input" type="radio" name="payment_method" value="{{ payment_method.code }}" checked="checked" />
+  {% else %}
+  <input class="form-check-input" type="radio" name="payment_method" value="{{ payment_method.code }}" />
+  {% endif %}
+  <label class="form-check-label">
     {{ payment_method.title }}
     {% if payment_method.terms %}
     ({{ payment_method.terms }})
-    {% endif %} </label>
+    {% endif %}
+  </label>
 </div>
 {% endfor %}
 {% endif %}
@@ -24,7 +26,7 @@
 </p>
 {% if text_agree %}
 <div class="buttons">
-  <div class="pull-right">{{ text_agree }}
+  <div class="float-right">{{ text_agree }}
     {% if agree %}
     <input type="checkbox" name="agree" value="1" checked="checked" />
     {% else %}
@@ -36,8 +38,8 @@
 </div>
 {% else %}
 <div class="buttons">
-  <div class="pull-right">
+  <div class="float-right">
     <input type="button" value="{{ button_continue }}" id="button-payment-method" data-loading-text="{{ text_loading }}" class="btn btn-primary" />
   </div>
 </div>
-{% endif %} 
+{% endif %}
