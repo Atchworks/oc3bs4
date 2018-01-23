@@ -2,39 +2,39 @@
   <div class="container">
     <div class="row">
       {% if informations %}
-      <div class="col-sm-3">
+      <div class="col-6 col-sm-3">
         <h5>{{ text_information }}</h5>
-        <ul class="list-unstyled">
+        <ul class="nav flex-column row">
          {% for information in informations %}
-          <li><a href="{{ information.href }}">{{ information.title }}</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ information.href }}">{{ information.title }}</a></li>
           {% endfor %}
         </ul>
       </div>
       {% endif %}
-      <div class="col-sm-3">
+      <div class="col-6 col-sm-3">
         <h5>{{ text_service }}</h5>
-        <ul class="list-unstyled">
-          <li><a href="{{ contact }}">{{ text_contact }}</a></li>
-          <li><a href="{{ return }}">{{ text_return }}</a></li>
-          <li><a href="{{ sitemap }}">{{ text_sitemap }}</a></li>
+        <ul class="nav flex-column row">
+          <li class="nav-item"><a class="nav-link" href="{{ contact }}">{{ text_contact }}</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ return }}">{{ text_return }}</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ sitemap }}">{{ text_sitemap }}</a></li>
         </ul>
       </div>
-      <div class="col-sm-3">
+      <div class="col-6 col-sm-3">
         <h5>{{ text_extra }}</h5>
-        <ul class="list-unstyled">
-          <li><a href="{{ manufacturer }}">{{ text_manufacturer }}</a></li>
-          <li><a href="{{ voucher }}">{{ text_voucher }}</a></li>
-          <li><a href="{{ affiliate }}">{{ text_affiliate }}</a></li>
-          <li><a href="{{ special }}">{{ text_special }}</a></li>
+        <ul class="nav flex-column row">
+          <li class="nav-item"><a class="nav-link" href="{{ manufacturer }}">{{ text_manufacturer }}</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ voucher }}">{{ text_voucher }}</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ affiliate }}">{{ text_affiliate }}</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ special }}">{{ text_special }}</a></li>
         </ul>
       </div>
-      <div class="col-sm-3">
+      <div class="col-6 col-sm-3">
         <h5>{{ text_account }}</h5>
-        <ul class="list-unstyled">
-          <li><a href="{{ account }}">{{ text_account }}</a></li>
-          <li><a href="{{ order }}">{{ text_order }}</a></li>
-          <li><a href="{{ wishlist }}">{{ text_wishlist }}</a></li>
-          <li><a href="{{ newsletter }}">{{ text_newsletter }}</a></li>
+        <ul class="nav flex-column row">
+          <li class="nav-item"><a class="nav-link" href="{{ account }}">{{ text_account }}</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ order }}">{{ text_order }}</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ wishlist }}">{{ text_wishlist }}</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ newsletter }}">{{ text_newsletter }}</a></li>
         </ul>
       </div>
     </div>

@@ -9,17 +9,17 @@
   </nav>
   <div class="row">{{ column_left }}
     {% if column_left and column_right %}
-    {% set class = 'col-sm-6' %}
+    {% set content_class = 'col-lg-6' %}
     {% elseif column_left or column_right %}
-    {% set class = 'col-sm-9' %}
+    {% set content_class = 'col-lg-9' %}
     {% else %}
-    {% set class = 'col-sm-12' %}
+    {% set content_class = 'col-12' %}
     {% endif %}
-    <div id="content" class="{{ class }}">{{ content_top }}
+    <div id="content" class="{{ content_class }}">{{ content_top }}
       <h1>{{ heading_title }}</h1>
       <form action="{{ action }}" method="post" enctype="multipart/form-data">
         <fieldset>
-          <div class="form-group row">
+          <div class="form-group row align-items-center">
             <label class="col-sm-2 col-form-label">{{ entry_newsletter }}</label>
             <div class="col-sm-10">
               {% if newsletter %}
@@ -45,7 +45,7 @@
           </div>
         </fieldset>
         <div class="buttons clearfix">
-          <div class="float-left"><a href="{{ back }}" class="btn btn-secondary">{{ button_back }}</a></div>
+          <div class="float-left"><a href="{{ back }}" class="btn btn-light">{{ button_back }}</a></div>
           <div class="float-right">
             <input type="submit" value="{{ button_continue }}" class="btn btn-primary" />
           </div>

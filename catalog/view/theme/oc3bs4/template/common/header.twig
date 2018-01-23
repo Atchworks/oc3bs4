@@ -78,13 +78,17 @@
 <header id="header">
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-sm-4">
-        <div id="logo">{% if logo %}<a href="{{ home }}"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-fluid" /></a>{% else %}
-          <h1><a href="{{ home }}">{{ name }}</a></h1>
-          {% endif %}</div>
+      <div class="col-md-4">
+        <div id="logo" class="h2 text-center text-md-left">
+          {% if logo %}
+          <a class="logo" href="{{ home }}" rel="home"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-fluid" /></a>
+          {% else %}
+          <a class="logo" href="{{ home }}" rel="home">{{ name }}</a>
+          {% endif %}
+        </div>
       </div>
-      <div class="col-sm-5">{{ search }}</div>
-      <div class="col-sm-3">{{ cart }}</div>
+      <div class="col-md-5">{{ search }}</div>
+      <div class="col-md-3">{{ cart }}</div>
     </div>
   </div>
 </header>

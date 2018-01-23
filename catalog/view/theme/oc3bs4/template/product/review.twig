@@ -6,14 +6,20 @@
     <td class="text-right">{{ review.date_added }}</td>
   </tr>
   <tr>
-    <td colspan="2"><p>{{ review.text }}</p>
+    <td colspan="2" class="rating">
+      <p>{{ review.text }}</p>
       {% for i in 1..5 %}
-      {% if review.rating < i %} <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> {% else %} <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> {% endif %}
-      {% endfor %}</td>
+        {% if review.rating < i %}
+          <i class="fa fa-star star-empty"></i>
+          {% else %}
+          <i class="fa fa-star"></i>
+        {% endif %}
+      {% endfor %}
+    </td>
   </tr>
 </table>
 {% endfor %}
 <div class="text-right">{{ pagination }}</div>
 {% else %}
 <p>{{ text_no_reviews }}</p>
-{% endif %} 
+{% endif %}

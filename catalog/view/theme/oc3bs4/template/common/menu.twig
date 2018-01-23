@@ -1,8 +1,8 @@
 {% if categories %}
 <div class="container">
-  <nav id="menu" class="navbar navbar-expand-md navbar-light bg-light">
+  <nav id="menu" class="navbar navbar-expand-md">
 
-    <span id="category" class="navbar-brand d-sm-none">{{ text_category }}</span>
+    <span id="category" class="navbar-text d-md-none">{{ text_category }}</span>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -15,14 +15,17 @@
         <li class="nav-item dropdown">
           <a href="{{ category.href }}" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ category.name }}</a>
           <div class="dropdown-menu">
+
             <div class="dropdown-inner"> {% for children in category.children|batch(category.children|length / category.column|round(1, 'ceil')) %}
               <ul class="list-unstyled">
                 {% for child in children %}
-                <li><a href="{{ child.href }}">{{ child.name }}</a></li>
+                <a class="dropdown-item" href="{{ child.href }}">{{ child.name }}</a>
                 {% endfor %}
               </ul>
-              {% endfor %}</div>
-            <a href="{{ category.href }}" class="see-all">{{ text_all }} {{ category.name }}</a> </div>
+              {% endfor %}
+            </div>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item text-primary" href="{{ category.href }}" class="see-all">{{ text_all }} {{ category.name }}</a> </div>
         </li>
         {% else %}
         <li class="nav-item"><a class="nav-link" href="{{ category.href }}">{{ category.name }}</a></li>

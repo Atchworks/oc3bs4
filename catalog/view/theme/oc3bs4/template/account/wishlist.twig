@@ -14,13 +14,13 @@
   {% endif %}
   <div class="row">{{ column_left }}
     {% if column_left and column_right %}
-    {% set class = 'col-sm-6' %}
+    {% set content_class = 'col-lg-6' %}
     {% elseif column_left or column_right %}
-    {% set class = 'col-sm-9' %}
+    {% set content_class = 'col-lg-9' %}
     {% else %}
-    {% set class = 'col-sm-12' %}
+    {% set content_class = 'col-12' %}
     {% endif %}
-    <div id="content" class="{{ class }}">{{ content_top }}
+    <div id="content" class="{{ content_class }}">{{ content_top }}
       <h2>{{ heading_title }}</h2>
       {% if products %}
       <div class="table-responsive">
@@ -46,7 +46,7 @@
           <td class="text-right">{% if product.price %}
             <div class="price"> {% if not product.special %}
               {{ product.price }}
-              {% else %} <b>{{ product.special }}</b> <s>{{ product.price }}</s> {% endif %} </div>
+              {% else %} <span class="price-new">{{ product.special }}</span> <del class="price-old">{{ product.price }}</del> {% endif %} </div>
             {% endif %}</td>
           <td class="text-right"><button type="button" onclick="cart.add('{{ product.product_id }}');" data-toggle="tooltip" title="{{ button_cart }}" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></button>
             <a href="{{ product.remove }}" data-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger"><i class="fa fa-times"></i></a></td>
