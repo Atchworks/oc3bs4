@@ -388,20 +388,29 @@ $('button[id^=\'button-custom-field\']').on('click', function() {
 });
 //--></script>
 <script type="text/javascript"><!--
-$('.date').datetimepicker({
-	language: '{{ datepicker }}',
-	pickTime: false
-});
+$(document).ready(function(){
 
-$('.datetime').datetimepicker({
-	language: '{{ datepicker }}',
-	pickDate: true,
-	pickTime: true
-});
+  $('.date, .time, .datetime').each(function(e){
+    var input = $(this).children('.form-control');
+    var inputGroup = $(this).children('.input-group-append');
+    var id = 'dtp-' + input.attr('id');
+    $(this).attr('id', id).attr('data-target-input', 'nearest');
+    input.addClass('datetimepicker-input').attr('data-target', '#' + id);
+    inputGroup.attr('data-target', '#' + id).attr('data-toggle', 'datetimepicker');
+  });
 
-$('.time').datetimepicker({
-	language: '{{ datepicker }}',
-	pickDate: false
+  $('.date').datetimepicker({
+  	language: '{{ datepicker }}',
+  	format: 'L'
+  });
+
+  $('.datetime').datetimepicker({
+  	language: '{{ datepicker }}'
+  });
+
+  $('.time').datetimepicker({
+  	format: 'LT'
+  });
 });
 //--></script>
 {{ footer }}

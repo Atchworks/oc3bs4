@@ -171,9 +171,29 @@
     {{ column_right }}</div>
 </div>
 <script type="text/javascript"><!--
-$('.date').datetimepicker({
-	language: '{{ datepicker }}',
-	pickTime: false
+$(document).ready(function(){
+
+  $('.date, .time, .datetime').each(function(e){
+    var input = $(this).children('.form-control');
+    var inputGroup = $(this).children('.input-group-append');
+    var id = 'dtp-' + input.attr('id');
+    $(this).attr('id', id).attr('data-target-input', 'nearest');
+    input.addClass('datetimepicker-input').attr('data-target', '#' + id);
+    inputGroup.attr('data-target', '#' + id).attr('data-toggle', 'datetimepicker');
+  });
+
+  $('.date').datetimepicker({
+  	language: '{{ datepicker }}',
+  	format: 'L'
+  });
+
+  $('.datetime').datetimepicker({
+  	language: '{{ datepicker }}'
+  });
+
+  $('.time').datetimepicker({
+  	format: 'LT'
+  });
 });
 //--></script>
 {{ footer }}
