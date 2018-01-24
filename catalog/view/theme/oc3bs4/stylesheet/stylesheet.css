@@ -26,6 +26,46 @@ img[alt] {
 	border-radius: 0;
 }
 
+/* alerts */
+
+.breadcrumb + .alert { padding: 1rem 1.5rem; }
+
+.alert-dismissible { padding-right: 4rem; }
+
+.alert-success a,
+.alert-success a:hover,
+.alert-success a:focus,
+.alert-success a:active {
+	color: #155724;
+	font-weight: 600;
+	text-decoration: underline;
+}
+
+.alert-sm {
+	font-size: 0.9rem;
+	padding: .5rem 1rem;
+}
+
+/* accordion */
+
+.accordion-toggle {
+	 display: block;
+}
+.accordion-toggle .fa:before {
+	content: "\f0d8";
+}
+.accordion-toggle.collapsed .fa:before {
+	content: "\f0d7";
+}
+
+#accordion > .card {
+	margin-bottom: .5rem;
+}
+#accordion > .card .card-header {
+	border: 0;
+}
+
+
 /* top */
 
 #top {
