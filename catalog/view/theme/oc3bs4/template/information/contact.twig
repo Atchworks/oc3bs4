@@ -62,7 +62,7 @@
           <div class="card-header">
             <a href="#collapse-location{{ location.location_id }}" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">{{ location.name }} <i class="fa fa-caret-down"></i></a>
           </div>
-          <div class="collapse" id="collapse-location{{ location.location_id }}">
+          <div class="collapse" id="collapse-location{{ location.location_id }}" data-parent="#accordion">
             <div class="card-body">
               <div class="row">
                 {% if location.image %}
@@ -134,7 +134,7 @@
           </div>
           {{ captcha }}
         </fieldset>
-        <div class="buttons">
+        <div class="buttons clearfix">
           <div class="float-right">
             <input class="btn btn-primary" type="submit" value="{{ button_submit }}" />
           </div>

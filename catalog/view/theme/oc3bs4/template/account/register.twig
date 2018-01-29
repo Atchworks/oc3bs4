@@ -286,7 +286,7 @@
         </fieldset>
         {{ captcha }}
         {% if text_agree %}
-        <div class="buttons">
+        <div class="buttons clearfix">
           <div class="float-right">{{ text_agree }}
             {% if agree %}
             <input type="checkbox" name="agree" value="1" checked="checked" />
@@ -298,7 +298,7 @@
           </div>
         </div>
         {% else %}
-        <div class="buttons">
+        <div class="buttons clearfix">
           <div class="float-right">
             <input type="submit" value="{{ button_continue }}" class="btn btn-primary" />
           </div>
